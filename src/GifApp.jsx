@@ -6,10 +6,13 @@ export const GifApp = () => {
 
     const [ categories, setCategories ] = useState([ 'One Punch', 'Dragon Ball' ]);
 
-    const onAddCategory = () => {
-        setCategories([ 'Valorant', ...categories ]);
+    const onAddCategory = ( newCategory ) => {
+
+        if ( categories.includes(newCategory) ) return; 
+
+        //categories.push(newCategory);
+        setCategories([ newCategory, ...categories ]);
         // setCategories( cat => [...cat, 'Valorant'] ); - otra opción 
-        //console.log('Valorant');
     };
 
     //console.log (categories);
@@ -22,7 +25,10 @@ export const GifApp = () => {
             <h1>GifApp</h1>
 
             {/*Input*/}
-            <AddCategory setCategories = { setCategories } />
+            <AddCategory 
+            // setCategories = { setCategories } 
+            onNewCategory = { onAddCategory }
+            />
 
             {/*Listado de Gif*/}
             
